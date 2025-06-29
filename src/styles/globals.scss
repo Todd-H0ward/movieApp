@@ -10,3 +10,10 @@ body {
   color: var(--text);
   background: var(--background);
 }
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

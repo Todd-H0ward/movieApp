@@ -1,10 +1,19 @@
 import { Provider } from 'react-redux';
 
-import createStore from '../../store';
+import { MOVIES_KEY } from '@/constants/storageKeys.ts';
+import { moviesData } from '@/stubs/moviesData.ts';
 
 import type { PropsWithChildren } from 'react';
 
-const store = createStore();
+import createStore from '@/store';
+
+const initialState = JSON.parse(localStorage.getItem(MOVIES_KEY) as string) || moviesData;
+
+const store = createStore({
+  movie: {
+    movies: initialState,
+  },
+});
 
 const StoreProvider = ({ children }: PropsWithChildren) => {
   return <Provider store={store}>{children}</Provider>;

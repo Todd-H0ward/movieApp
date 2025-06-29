@@ -33,7 +33,7 @@ export default [
       'import/order': [
         'error',
         {
-          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+          groups: ['builtin', 'external', 'internal', 'parent', 'type', 'sibling', 'object', 'index'],
           'newlines-between': 'always',
           alphabetize: {
             order: 'asc',
@@ -41,33 +41,38 @@ export default [
           },
           pathGroups: [
             {
-              pattern: '{components/**,**/components/**}',
+              pattern: '{@/types/**,**/types/**}',
               group: 'internal',
               position: 'before',
             },
             {
-              pattern: '{store/**,**/store/**}',
+              pattern: '{@/components/**,**/components/**}',
               group: 'internal',
               position: 'before',
             },
             {
-              pattern: '{hooks/**,**/hooks/**}',
+              pattern: '{@/store/**,**/store/**}',
               group: 'internal',
               position: 'before',
             },
             {
-              pattern: '{utils/**,**/utils/**}',
+              pattern: '{@/hooks/**,**/hooks/**}',
               group: 'internal',
               position: 'before',
             },
             {
-              pattern: '{stubs/**,**/stubs/**,constants/**,**/constants/**}',
+              pattern: '{@/utils/**,**/utils/**}',
               group: 'internal',
               position: 'before',
             },
             {
-              pattern: '*.+(scss)',
-              group: 'index',
+              pattern: '{@/stubs/**,**/stubs/**,@/constants/**,**/constants/**}',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '**/*.scss',
+              group: 'sibling',
               position: 'after',
             },
           ],
