@@ -1,0 +1,44 @@
+.root {
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    .image {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.wrapper {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.image {
+  transition: transform 0.3s;
+}
+
+.description {
+  padding: 20px;
+}
+
+.title {
+  margin-bottom: 13px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}

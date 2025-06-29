@@ -1,14 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit';
 
 import movieSlice from './slices/movieSlice.ts';
 
-const createStore = () => {
-  const rootReducer = {
-    task: movieSlice,
+import type { RootStore } from '../types/RootStore.ts';
+
+const createStore = (initialState?: RootStore) => {
+  const rootReducer: ReducersMapObject<RootStore> = {
+    movie: movieSlice,
   };
 
-  return configureStore({
+  return configureStore<RootStore>({
     reducer: rootReducer,
+    preloadedState: initialState,
   });
 };
 

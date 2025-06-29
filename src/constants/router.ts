@@ -1,5 +1,18 @@
 import { createBrowserRouter } from 'react-router';
 
+import App from '../App.tsx';
 import HomePage from '../components/pages/HomePage';
 
-export const ROUTER = createBrowserRouter([{ path: '/', Component: HomePage }]);
+import { ROUTES } from './routes.ts';
+
+export const ROUTER = createBrowserRouter([
+  {
+    Component: App,
+    children: [
+      {
+        path: ROUTES.MOVIES,
+        Component: HomePage,
+      },
+    ],
+  },
+]);
