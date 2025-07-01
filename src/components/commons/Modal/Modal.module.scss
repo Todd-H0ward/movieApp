@@ -16,7 +16,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 20px 5px 20px 15px;
+  padding: 20px;
   max-width: 500px;
   width: 100%;
   color: var(--background);
@@ -26,14 +26,24 @@
   transform: translate(-50%, -50%);
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 10px;
+}
+
 .title {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 10px;
+}
+
+.close {
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .content {
   max-height: 65vh;
-  padding-right: 10px;
   overflow-y: auto;
 }
