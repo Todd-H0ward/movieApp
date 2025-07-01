@@ -1,6 +1,16 @@
 .root {
   padding: 2px 6px;
-  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 0.9rem;
   background-color: var(--accent);
   border-radius: 4px;
+}
+
+.large {
+  padding: 5px 10px;
+  font-size: 1.1rem;
+  border-radius: 8px;
 }

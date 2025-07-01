@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  flex: 1 1 auto;
+  padding: 10px 12px;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+}

@@ -1,5 +1,4 @@
-export type Movie = {
-  id: string;
+export interface AddMovieSchema {
   name: string;
   originalName: string;
   year: number;
@@ -8,8 +7,4 @@ export type Movie = {
   director: string;
   rating: number;
   image: string;
-};
-
-export interface MovieStore {
-  movies: Movie[];
 }
