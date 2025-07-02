@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preview {
+  position: relative;
+  margin: 0 auto;
+}
+
+.image {
+  max-height: 200px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.clear {
+  position: absolute;
+  top: -8px;
+  right: -20px;
+  width: 30px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary);
+  border-radius: 10px;
+}

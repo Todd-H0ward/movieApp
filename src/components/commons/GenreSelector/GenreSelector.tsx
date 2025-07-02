@@ -9,7 +9,6 @@ import s from './GenreSelector.module.scss';
 
 interface GenreSelectorProps {
   genres: string[];
-  // eslint-disable-next-line no-unused-vars
   onChange: (genres: string[]) => void;
   error?: string;
 }
@@ -37,13 +36,18 @@ const GenreSelector = ({ genres, onChange, error }: GenreSelectorProps) => {
   };
 
   const removeGenre = (value: string) => {
-    const newGenres = genres.filter((genre) => genre !== value);
-    onChange(newGenres);
+    onChange(genres.filter((genre) => genre !== value));
   };
 
   return (
     <div className={s.root}>
-      <Input label="Жанр" value={inputValue} onChange={handleInputChange} onKeyDown={handleKeyDown} />
+      <Input
+        label="Жанр"
+        value={inputValue}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
+        error={error && genres.length === 0 ? error : ''}
+      />
       <div className={s.genres}>
         {genres.map((genre) => (
           <Badge key={genre} large>
@@ -60,7 +64,7 @@ const GenreSelector = ({ genres, onChange, error }: GenreSelectorProps) => {
           </Badge>
         ))}
       </div>
-      {error && <div className={s.error}>{error}</div>}
+      {error && genres.length > 0 && <div className={s.error}>{error}</div>}
     </div>
   );
 };

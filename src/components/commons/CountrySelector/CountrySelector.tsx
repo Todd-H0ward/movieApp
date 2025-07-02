@@ -9,7 +9,6 @@ import s from './CountrySelector.module.scss';
 
 interface CountrySelectorProps {
   countries: string[];
-  // eslint-disable-next-line no-unused-vars
   onChange: (countries: string[]) => void;
   error?: string;
 }
@@ -37,13 +36,18 @@ const CountrySelector = ({ countries, onChange, error }: CountrySelectorProps) =
   };
 
   const removeCountry = (value: string) => {
-    const newCountries = countries.filter((country) => country !== value);
-    onChange(newCountries);
+    onChange(countries.filter((country) => country !== value));
   };
 
   return (
     <div className={s.root}>
-      <Input label="Страна" value={inputValue} onChange={handleInputChange} onKeyDown={handleKeyDown} />
+      <Input
+        label="Страна"
+        value={inputValue}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
+        error={error && countries.length === 0 ? error : ''}
+      />
       <div className={s.genres}>
         {countries.map((country) => (
           <Badge key={country} large>
@@ -60,7 +64,7 @@ const CountrySelector = ({ countries, onChange, error }: CountrySelectorProps) =
           </Badge>
         ))}
       </div>
-      {error && <div className={s.error}>{error}</div>}
+      {error && countries.length > 0 && <p className={s.error}>{error}</p>}
     </div>
   );
 };

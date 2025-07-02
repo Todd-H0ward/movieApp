@@ -15,6 +15,14 @@ const store = createStore({
   },
 });
 
+const handleStorageChange = () => {
+  const movies = store.getState().movie.movies;
+
+  localStorage.setItem(MOVIES_KEY, JSON.stringify(movies));
+};
+
+store.subscribe(handleStorageChange);
+
 const StoreProvider = ({ children }: PropsWithChildren) => {
   return <Provider store={store}>{children}</Provider>;
 };
