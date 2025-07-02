@@ -12,4 +12,5 @@ export type Movie = {
 
 export interface MovieStore {
   movies: Movie[];
+  quickViewMovieId: string | null;
 }

@@ -61,15 +61,9 @@ const AddMovieModal = () => {
       </Button>
       <Modal isOpen={isModalOpen} onClose={onModalClose} title="Добавить фильм">
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          <Input label="Название" {...register('name', { required: true })} error={errors.name?.message} />
+          <Input label="Название" {...register('name')} error={errors.name?.message} />
           <Input label="Оригинальное название" {...register('originalName')} error={errors.originalName?.message} />
-          <Input
-            label="Год выхода"
-            type="number"
-            step={1}
-            {...register('year', { required: true, valueAsNumber: true })}
-            error={errors.year?.message}
-          />
+          <Input label="Год выхода" type="number" step={1} {...register('year')} error={errors.year?.message} />
           <Controller
             name="genres"
             control={control}
@@ -97,13 +91,7 @@ const AddMovieModal = () => {
             )}
           />
           <Input label="Режиссёр" {...register('director')} error={errors.director?.message} />
-          <Input
-            label="Рейтинг"
-            type="number"
-            step={0.1}
-            {...register('rating', { valueAsNumber: true })}
-            error={errors.rating?.message}
-          />
+          <Input label="Рейтинг" type="number" step={0.1} {...register('rating')} error={errors.rating?.message} />
           <Controller
             name="image"
             control={control}

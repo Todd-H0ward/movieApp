@@ -4,6 +4,7 @@ import type { Movie, MovieStore } from '@/types/entities/Movie.ts';
 
 const initialState: MovieStore = {
   movies: [],
+  quickViewMovieId: null,
 };
 
 const movieSlice = createSlice({
@@ -17,8 +18,11 @@ const movieSlice = createSlice({
 
       state.movies.push(action.payload);
     },
+    setQuickViewMovieId: (state, action: PayloadAction<string | null>) => {
+      state.quickViewMovieId = action.payload;
+    },
   },
 });
 
 export default movieSlice.reducer;
-export const { addMovie } = movieSlice.actions;
+export const { addMovie, setQuickViewMovieId } = movieSlice.actions;

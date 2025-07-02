@@ -1,4 +1,7 @@
 .root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--primary);
   border-radius: 20px;
   overflow: hidden;
@@ -6,26 +9,33 @@
 
   &:hover {
     .image {
-      transform: scale(1.2);
+      transform: scale(1.4);
     }
   }
 }
 
 .wrapper {
-  max-height: 500px;
+  height: 450px;
   overflow: hidden;
 }
 
 .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
   transition: transform 0.3s;
 }
 
 .description {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1 1 auto;
 }
 
 .title {
-  margin-bottom: 13px;
   font-size: 1.1rem;
   font-weight: 600;
 }
@@ -35,6 +45,7 @@
   flex-direction: column;
   gap: 10px;
   font-size: 0.9rem;
+  margin-bottom: auto;
 
   li {
     display: flex;

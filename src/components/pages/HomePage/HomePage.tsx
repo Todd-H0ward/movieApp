@@ -1,5 +1,6 @@
 import AddMovieModal from '@/components/pages/HomePage/AddMovieModal';
 import MovieList from '@/components/pages/HomePage/MovieList';
+import ViewMovieModal from '@/components/pages/HomePage/ViewMovieModal';
 
 import s from './HomePage.module.scss';
 
@@ -11,6 +12,7 @@ const HomePage = () => {
         <AddMovieModal />
       </div>
       <MovieList />
+      <ViewMovieModal />
     </div>
   );
 };
