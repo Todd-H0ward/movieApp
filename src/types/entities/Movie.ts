@@ -8,6 +8,7 @@ export type Movie = {
   director: string;
   rating: number;
   image: string;
+  description: string;
 };
 
 export interface MovieStore {

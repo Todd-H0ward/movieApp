@@ -43,6 +43,7 @@ const CountrySelector = ({ countries, onChange, error }: CountrySelectorProps) =
     <div className={s.root}>
       <Input
         label="Страна"
+        placeholder="Выберите страны"
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}

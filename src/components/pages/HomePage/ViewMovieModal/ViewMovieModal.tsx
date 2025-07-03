@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Badge from '@/components/commons/Badge';
 import Modal from '@/components/commons/Modal';
+import Rating from '@/components/commons/Rating';
 
 import { selectQuickViewMovie } from '@/store/selectors/movieSelectors.ts';
 import { setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
@@ -37,6 +38,12 @@ const ViewMovieModal = () => {
               ))}
             </li>
             <li>Режиссёр: {movie.director}</li>
+            <li className={s.rating}>
+              Рейтинг: <Rating className={s.ratingValue} rating={movie.rating} />
+            </li>
+            <li className={s.description}>
+              <span>Описание:</span> {movie.description}
+            </li>
           </ul>
         </div>
       )}

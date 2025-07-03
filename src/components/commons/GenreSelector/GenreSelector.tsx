@@ -43,6 +43,7 @@ const GenreSelector = ({ genres, onChange, error }: GenreSelectorProps) => {
     <div className={s.root}>
       <Input
         label="Жанр"
+        placeholder="Выберите жанры"
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}

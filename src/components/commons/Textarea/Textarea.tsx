@@ -15,11 +15,13 @@ const Textarea = forwardRef(
     return (
       <div className={s.root}>
         {label && <label htmlFor={name}>{label}</label>}
-        <textarea ref={ref} className={clsx(s.root, className)} name={name} {...props} />
+        <textarea ref={ref} className={clsx(s.textarea, className)} name={name} {...props} />
         {error && <p className={s.error}>{error}</p>}
       </div>
     );
   },
 );
+
+Textarea.displayName = 'Textarea';
 
 export default Textarea;

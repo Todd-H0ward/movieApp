@@ -4,11 +4,21 @@
   gap: 5px;
 }
 
-.input {
+.textarea {
+  height: 120px;
   flex: 1 1 auto;
   padding: 10px 12px;
   border: 1px solid var(--primary);
   border-radius: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  resize: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+  &::placeholder {
+    color: rgb(from var(--background) r g b / 60%);
+  }
 }
 
 .error {

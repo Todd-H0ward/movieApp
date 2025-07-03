@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import type { Movie } from '@/types/entities/Movie';
 
 import Button from '@/components/commons/Button';
+import Rating from '@/components/commons/Rating';
 
 import { setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
 
@@ -26,10 +27,11 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
     dispatch(setQuickViewMovieId(movie.id));
   };
 
-  const { name, originalName, year, countries, genres, director, image } = movie;
+  const { name, originalName, year, countries, genres, director, rating, image } = movie;
 
   return (
     <li className={clsx(s.root, className)}>
+      <Rating className={s.rating} rating={rating} />
       <div className={s.wrapper}>
         <img className={s.image} src={image} alt={name} />
       </div>
@@ -43,9 +45,9 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
           </li>
           <li>Режиссёр: {director}</li>
         </ul>
-        <Button onClick={handleQuickViewClick}>
-          <Search />
-          Быстрый просмотр
+        <Button className={s.btn} onClick={handleQuickViewClick}>
+          <Search className={s.icon} />
+          <span className={s.btnText}>Быстрый просмотр</span>
         </Button>
       </div>
     </li>

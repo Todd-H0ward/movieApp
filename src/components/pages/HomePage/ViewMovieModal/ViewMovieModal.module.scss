@@ -16,3 +16,16 @@
     gap: 5px;
   }
 }
+
+.description {
+  flex-direction: column;
+}
+
+.rating {
+  align-items: center;
+}
+
+.ratingValue {
+  padding: 5px 9px;
+  font-size: 0.8rem;
+}

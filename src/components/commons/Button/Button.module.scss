@@ -6,16 +6,33 @@
   gap: 5px;
   border-radius: 10px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 .solid {
   color: var(--text);
   background: var(--primary);
+
+  &:hover {
+    background: rgb(from var(--primary) r g b / 80%);
+  }
+
+  &:active {
+    background: rgb(from var(--primary) r g b / 60%);
+  }
 }
 
 .filled {
   color: var(--text);
   background: var(--secondary);
+
+  &:hover {
+    background: rgb(from var(--secondary) r g b / 80%);
+  }
+
+  &:active {
+    background: rgb(from var(--secondary) r g b / 60%);
+  }
 }
 
 .outline {

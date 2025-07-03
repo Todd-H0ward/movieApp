@@ -7,4 +7,5 @@ export interface AddMovieSchema {
   director: string;
   rating: number;
   image: string;
+  description: string;
 }

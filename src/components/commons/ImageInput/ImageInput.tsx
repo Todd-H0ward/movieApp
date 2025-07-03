@@ -28,6 +28,7 @@ const ImageInput = ({ image, onChange, error, className }: ImageInputProps) => {
       <Input
         className={className}
         label="Ссылка на изображение"
+        placeholder="https://example.com/example"
         value={image}
         onChange={handleInputChange}
         error={error}

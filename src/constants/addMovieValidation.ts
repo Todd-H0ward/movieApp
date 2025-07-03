@@ -27,4 +27,5 @@ export const addMovieValidation = object({
     .max(10, 'Рейтинг должен быть не более десяти')
     .required('Укажите рейтинг'),
   image: string().required('Укажите ссылку на изображение').url('Введите корректный URL'),
+  description: string().required('Добавьте описание фильма').max(500, 'Описание не должно превышать 500 символов'),
 });

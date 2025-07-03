@@ -13,6 +13,7 @@ import GenreSelector from '@/components/commons/GenreSelector';
 import ImageInput from '@/components/commons/ImageInput';
 import Input from '@/components/commons/Input';
 import Modal from '@/components/commons/Modal';
+import Textarea from '@/components/commons/Textarea';
 
 import { addMovie } from '@/store/slices/movieSlice.ts';
 
@@ -61,9 +62,27 @@ const AddMovieModal = () => {
       </Button>
       <Modal isOpen={isModalOpen} onClose={onModalClose} title="Добавить фильм">
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          <Input label="Название" {...register('name')} error={errors.name?.message} />
-          <Input label="Оригинальное название" {...register('originalName')} error={errors.originalName?.message} />
-          <Input label="Год выхода" type="number" step={1} {...register('year')} error={errors.year?.message} />
+          <Input
+            label="Название"
+            placeholder="Например: Властелин колец"
+            autoFocus
+            {...register('name')}
+            error={errors.name?.message}
+          />
+          <Input
+            label="Оригинальное название"
+            placeholder="Например: The Lord of the Rings"
+            {...register('originalName')}
+            error={errors.originalName?.message}
+          />
+          <Input
+            label="Год выхода"
+            type="number"
+            placeholder="2001"
+            step={1}
+            {...register('year')}
+            error={errors.year?.message}
+          />
           <Controller
             name="genres"
             control={control}
@@ -90,8 +109,20 @@ const AddMovieModal = () => {
               />
             )}
           />
-          <Input label="Режиссёр" {...register('director')} error={errors.director?.message} />
-          <Input label="Рейтинг" type="number" step={0.1} {...register('rating')} error={errors.rating?.message} />
+          <Input
+            label="Режиссёр"
+            placeholder="Питер Джексон"
+            {...register('director')}
+            error={errors.director?.message}
+          />
+          <Input
+            label="Рейтинг"
+            type="number"
+            step={0.1}
+            placeholder="От 0.0 до 10.0"
+            {...register('rating')}
+            error={errors.rating?.message}
+          />
           <Controller
             name="image"
             control={control}
@@ -104,6 +135,12 @@ const AddMovieModal = () => {
                 error={fieldState.error?.message}
               />
             )}
+          />
+          <Textarea
+            label="Описание фильма"
+            placeholder="Например: Давным-давно в далёкой-далёкой галактике..."
+            {...register('description')}
+            error={errors.description?.message}
           />
           <div className={s.controls}>
             <Button type="submit">Добавить</Button>

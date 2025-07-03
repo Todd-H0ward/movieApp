@@ -9,6 +9,11 @@
   padding: 10px 12px;
   border: 1px solid var(--primary);
   border-radius: 10px;
+  transition: box-shadow 0.2s;
+
+  &::placeholder {
+    color: rgb(from var(--background) r g b / 60%);
+  }
 }
 
 .error {
