@@ -78,7 +78,7 @@ const AddMovieModal = () => {
           <Input
             label="Год выхода"
             type="number"
-            placeholder="2001"
+            placeholder="Например: 2001"
             step={1}
             {...register('year')}
             error={errors.year?.message}
@@ -116,7 +116,7 @@ const AddMovieModal = () => {
           />
           <Input
             label="Режиссёр"
-            placeholder="Питер Джексон"
+            placeholder="Например: Питер Джексон"
             {...register('director')}
             error={errors.director?.message}
           />

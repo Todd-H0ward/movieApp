@@ -4,21 +4,22 @@
 }
 
 .info {
+  margin-bottom: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
   font-size: 0.9rem;
-  margin-bottom: auto;
-
-  li {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
 }
 
-.description {
-  flex-direction: column;
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  line-height: 1.3;
+}
+
+.name {
+  font-weight: 600;
 }
 
 .rating {

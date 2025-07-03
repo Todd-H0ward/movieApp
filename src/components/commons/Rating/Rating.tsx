@@ -29,8 +29,8 @@ const Rating = ({ rating, className }: RatingProps) => {
         } as CSSProperties
       }
     >
-      <Star className={s.star} />
-      <span className={s.rating}>{rating.toFixed(1)}</span>
+      <Star size={16} fill={ratingColor} />
+      <span>{rating.toFixed(1)}</span>
     </div>
   );
 };

@@ -60,7 +60,7 @@ const TagsInput = ({ tags, changeTags, label, error, hints, className, ...props 
           {...props}
         />
         <Button
-          className={clsx(s.addBtn, error && s.error)}
+          className={clsx(s.addBtn, error && s.addBtnError)}
           variant="icon"
           type="button"
           disabled={inputValue.length === 0}

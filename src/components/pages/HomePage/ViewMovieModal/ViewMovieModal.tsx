@@ -1,3 +1,4 @@
+import { clsx } from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Badge from '@/components/commons/Badge';
@@ -22,27 +23,35 @@ const ViewMovieModal = () => {
       {movie && (
         <div className={s.root}>
           <ul className={s.info}>
-            <li>Название: {movie.name}</li>
-            <li>Оригинальное название: {movie.originalName}</li>
-            <li>Год выхода: {movie.year}</li>
-            <li>
-              Страна:
+            <li className={s.item}>
+              <span className={s.name}>Название:</span> {movie.name}
+            </li>
+            <li className={s.item}>
+              <span className={s.name}>Оригинальное название:</span> {movie.originalName}
+            </li>
+            <li className={s.item}>
+              <span className={s.name}>Год выхода:</span> {movie.year}
+            </li>
+            <li className={s.item}>
+              <span className={s.name}>Страна:</span>
               {movie.countries.map((country) => (
                 <Badge key={country}>{country}</Badge>
               ))}
             </li>
-            <li>
-              Жанры:
+            <li className={s.item}>
+              <span className={s.name}>Жанры:</span>
               {movie.genres.map((genre) => (
                 <Badge key={genre}>{genre}</Badge>
               ))}
             </li>
-            <li>Режиссёр: {movie.director}</li>
-            <li className={s.rating}>
-              Рейтинг: <Rating className={s.ratingValue} rating={movie.rating} />
+            <li className={s.item}>
+              <span className={s.name}>Режиссёр:</span> {movie.director}
             </li>
-            <li className={s.description}>
-              <span>Описание:</span> {movie.description}
+            <li className={clsx(s.item, s.rating)}>
+              <span className={s.name}>Рейтинг:</span> <Rating className={s.ratingValue} rating={movie.rating} />
+            </li>
+            <li className={s.item}>
+              <span className={s.name}>Описание:</span> {movie.description}
             </li>
           </ul>
         </div>

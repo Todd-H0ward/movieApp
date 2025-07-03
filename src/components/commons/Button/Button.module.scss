@@ -1,12 +1,14 @@
 .root {
-  padding: 10px 12px;
+  padding: 0.6rem 0.8rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 
   &:disabled {
     cursor: not-allowed;
@@ -60,11 +62,11 @@
   }
 
   &:active {
-    background: rgba(0, 0, 0, 0.20);
+    background: rgba(0, 0, 0, 0.2);
   }
 
   &:disabled {
     color: rgb(from var(--background) r g b / 70%);
-    background: rgba(0, 0, 0, 0.10);;
+    background: rgba(0, 0, 0, 0.1);
   }
 }
