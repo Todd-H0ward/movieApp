@@ -11,9 +11,9 @@ interface RatingProps {
 }
 
 const getRatingColor = (rating: number) => {
-  if (rating >= 8) return '#FFD700';
-  if (rating >= 6) return '#4CC9F0';
-  if (rating >= 4) return '#F8961E';
+  if (rating >= 8) return '#ffd25e';
+  if (rating >= 7) return '#3bb33b';
+  if (rating >= 6) return '#777777';
   return '#EF476F';
 };
 

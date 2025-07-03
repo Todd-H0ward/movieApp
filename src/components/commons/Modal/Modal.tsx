@@ -103,7 +103,7 @@ const Modal = ({ isOpen, onClose, title, children, className }: PropsWithChildre
             >
               <div className={s.header}>
                 {title && <h2 className={s.title}>{title}</h2>}{' '}
-                <Button className={s.close} variant="clear" onClick={onClose}>
+                <Button variant="icon" onClick={onClose}>
                   <X />
                 </Button>
               </div>

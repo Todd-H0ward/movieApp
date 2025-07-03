@@ -8,16 +8,16 @@ import { v4 as uuidv4 } from 'uuid';
 import type { AddMovieSchema } from '@/types/entities/AddMovieSchema.ts';
 
 import Button from '@/components/commons/Button';
-import CountrySelector from '@/components/commons/CountrySelector';
-import GenreSelector from '@/components/commons/GenreSelector';
 import ImageInput from '@/components/commons/ImageInput';
 import Input from '@/components/commons/Input';
 import Modal from '@/components/commons/Modal';
+import TagsInput from '@/components/commons/TagsInput';
 import Textarea from '@/components/commons/Textarea';
 
 import { addMovie } from '@/store/slices/movieSlice.ts';
 
 import { addMovieValidation } from '@/constants/addMovieValidation.ts';
+import { GENRES } from '@/constants/genres.ts';
 
 import s from './AddMovieModal.module.scss';
 
@@ -87,9 +87,12 @@ const AddMovieModal = () => {
             name="genres"
             control={control}
             render={({ field, fieldState }) => (
-              <GenreSelector
-                genres={field.value}
-                onChange={(genres) => {
+              <TagsInput
+                label="Жанр"
+                placeholder="Выберите жанры"
+                tags={field.value}
+                hints={GENRES}
+                changeTags={(genres) => {
                   field.onChange(genres);
                 }}
                 error={fieldState.error?.message}
@@ -100,9 +103,11 @@ const AddMovieModal = () => {
             name="countries"
             control={control}
             render={({ field, fieldState }) => (
-              <CountrySelector
-                countries={field.value}
-                onChange={(countries) => {
+              <TagsInput
+                label="Страна"
+                placeholder="Выберите страны"
+                tags={field.value}
+                changeTags={(countries) => {
                   field.onChange(countries);
                 }}
                 error={fieldState.error?.message}

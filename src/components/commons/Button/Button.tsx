@@ -4,7 +4,7 @@ import type { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 
 import s from './Button.module.scss';
 
-type ButtonVariants = 'solid' | 'outline' | 'filled' | 'clear';
+type ButtonVariants = 'solid' | 'outline' | 'filled' | 'clear' | 'icon';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants;
@@ -16,6 +16,7 @@ const variantClasses: Record<ButtonVariants, string> = {
   outline: s.outline,
   filled: s.filled,
   clear: s.clear,
+  icon: s.icon,
 };
 
 const Button = ({ variant = 'solid', children, className, ...props }: PropsWithChildren<ButtonProps>) => {

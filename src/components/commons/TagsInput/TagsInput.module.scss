@@ -1,0 +1,45 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.input {
+  padding-right: 38px;
+}
+
+.addBtn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+
+  &.error {
+    bottom: 26px;
+  }
+}
+
+.hints {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  margin-top: 4px;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  padding: 0 5px;
+  overflow-x: auto;
+}
+
+.error {
+  color: var(--primary);
+  font-size: 0.9rem;
+}

@@ -6,7 +6,11 @@
   gap: 5px;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .solid {
@@ -45,4 +49,22 @@
   padding: 0;
   background: transparent;
   border: none;
+}
+
+.icon {
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.20);
+  }
+
+  &:disabled {
+    color: rgb(from var(--background) r g b / 70%);
+    background: rgba(0, 0, 0, 0.10);;
+  }
 }
