@@ -1,6 +1,6 @@
 import { array, number, object, string } from 'yup';
 
-export const addMovieValidation = object({
+export const ADD_MOVIE_VALIDATION = object({
   name: string().required('Укажите название фильма').max(50, 'Название не может превышать 50 символов'),
   originalName: string()
     .required('Укажите оригинальное название фильма')

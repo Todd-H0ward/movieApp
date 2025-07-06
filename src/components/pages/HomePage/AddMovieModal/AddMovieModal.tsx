@@ -16,7 +16,7 @@ import Textarea from '@/components/commons/Textarea';
 
 import { addMovie } from '@/store/slices/movieSlice.ts';
 
-import { addMovieValidation } from '@/constants/addMovieValidation.ts';
+import { ADD_MOVIE_VALIDATION } from '@/constants/addMovieValidation.ts';
 import { GENRES } from '@/constants/genres.ts';
 
 import s from './AddMovieModal.module.scss';
@@ -27,7 +27,7 @@ const AddMovieModal = () => {
       countries: [],
       genres: [],
     },
-    resolver: yupResolver(addMovieValidation),
+    resolver: yupResolver(ADD_MOVIE_VALIDATION),
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
