@@ -12,6 +12,7 @@ const initialState = JSON.parse(localStorage.getItem(MOVIES_KEY) as string) || m
 const store = createStore({
   movie: {
     movies: initialState,
+    quickViewMovieId: null,
   },
 });
 
