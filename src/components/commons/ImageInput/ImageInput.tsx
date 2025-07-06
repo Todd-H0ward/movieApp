@@ -1,26 +1,51 @@
-import { CircleX } from 'lucide-react';
+import { X } from 'lucide-react';
+import { type ChangeEvent, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import Button from '@/components/commons/Button';
 import Input from '@/components/commons/Input';
 
-import type { ChangeEvent } from 'react';
-
 import s from './ImageInput.module.scss';
 
 interface ImageInputProps {
+  name: string;
   image?: string;
   onChange?: (image: string) => void;
   error?: string;
   className?: string;
 }
 
-const ImageInput = ({ image, onChange, error, className }: ImageInputProps) => {
+const ImageInput = ({ name, image, onChange, error, className }: ImageInputProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const {
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useFormContext();
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
+    const newValue = e.target.value;
+    onChange?.(newValue);
+    setIsLoading(true);
+    clearErrors(name);
+
+    if (!newValue) {
+      setIsLoading(false);
+    }
   };
 
   const handleClear = () => {
     onChange?.('');
+    setIsLoading(false);
+    clearErrors(name);
+  };
+
+  const handleImageError = () => {
+    setIsLoading(false);
+    setError(name, {
+      type: 'manual',
+      message: 'Не удалось загрузить изображение. Проверьте ссылку.',
+    });
   };
 
   return (
@@ -33,20 +58,24 @@ const ImageInput = ({ image, onChange, error, className }: ImageInputProps) => {
         onChange={handleInputChange}
         error={error}
       />
-
-      {image && (
+      {image && !errors.image?.message && (
         <div className={s.preview}>
           <img
+            className={s.image}
             src={image}
             alt="Превью"
-            className={s.image}
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
+            decoding="async"
+            onLoad={() => {
+              setIsLoading(false);
+              clearErrors(name);
             }}
+            onError={handleImageError}
           />
-          <Button type="button" variant="clear" className={s.clear} onClick={handleClear} title="Очистить">
-            <CircleX size={20} />
-          </Button>
+          {!isLoading && (
+            <Button type="button" variant="icon" className={s.clear} onClick={handleClear} aria-label="Очистить">
+              <X size={20} />
+            </Button>
+          )}
         </div>
       )}
     </div>

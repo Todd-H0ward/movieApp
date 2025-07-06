@@ -19,11 +19,13 @@
   position: absolute;
   top: -8px;
   right: -20px;
-  width: 30px;
-  aspect-ratio: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: var(--primary);
-  border-radius: 10px;
+
+  &:hover {
+    background: rgb(from var(--primary) r g b / 80%);
+  }
+
+  &:active {
+    background: rgb(from var(--primary) r g b / 60%);
+  }
 }
