@@ -15,4 +15,6 @@ const createStore = (initialState?: RootStore) => {
   });
 };
 
+export type AppStore = ReturnType<typeof createStore>;
+
 export default createStore;

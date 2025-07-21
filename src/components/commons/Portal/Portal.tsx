@@ -1,13 +1,20 @@
-import { createPortal } from 'react-dom';
+'use client';
 
-import type { PropsWithChildren } from 'react';
+import { useState, type PropsWithChildren, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface PortalProps {
   element?: HTMLElement;
 }
 
-const Portal = ({ children, element = document.body }: PropsWithChildren<PortalProps>) => {
-  return createPortal(children, element);
+const Portal = ({ children, element }: PropsWithChildren<PortalProps>) => {
+  const [target, setTarget] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setTarget(element || document.body);
+  }, [element]);
+
+  return target && createPortal(children, target);
 };
 
 export default Portal;

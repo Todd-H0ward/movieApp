@@ -6,12 +6,13 @@
 
 .preview {
   position: relative;
+  max-width: 250px;
+  width: 100%;
+  height: 200px;
   margin: 0 auto;
 }
 
 .image {
-  max-height: 200px;
-  border-radius: 10px;
   object-fit: contain;
 }
 

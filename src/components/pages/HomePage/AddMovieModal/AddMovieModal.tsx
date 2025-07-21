@@ -1,3 +1,5 @@
+'use client';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CirclePlus } from 'lucide-react';
 import { useState } from 'react';
@@ -5,7 +7,7 @@ import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import type { AddMovieSchema } from '@/types/entities/AddMovieSchema.ts';
+import type { AddMovieSchema } from '@/types/AddMovieSchema.ts';
 
 import Button from '@/components/commons/Button';
 import ImageInput from '@/components/commons/ImageInput';

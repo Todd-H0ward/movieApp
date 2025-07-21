@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from 'clsx';
 import { CircleX, Plus } from 'lucide-react';
 import { type ChangeEvent, type InputHTMLAttributes, type KeyboardEvent, useState } from 'react';

@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-import type { Movie, MovieStore } from '@/types/entities/Movie.ts';
+import type { Movie, MovieStore } from '@/types/Movie.ts';
 
 const initialState: MovieStore = {
   movies: [],

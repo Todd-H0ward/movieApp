@@ -1,8 +1,11 @@
+'use client';
+
 import { clsx } from 'clsx';
 import { Search } from 'lucide-react';
+import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 
-import type { Movie } from '@/types/entities/Movie';
+import type { Movie } from '@/types/Movie';
 
 import Button from '@/components/commons/Button';
 import Rating from '@/components/commons/Rating';
@@ -33,7 +36,7 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
     <li className={clsx(s.root, className)}>
       <Rating className={s.rating} rating={rating} />
       <div className={s.wrapper}>
-        <img className={s.image} src={image} alt={name} />
+        <Image className={s.image} src={image} width={380} height={450} alt={name} />
       </div>
       <div className={s.description}>
         <h2 className={s.title}>{name}</h2>

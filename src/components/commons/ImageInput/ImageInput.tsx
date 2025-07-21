@@ -1,4 +1,7 @@
+'use client';
+
 import { X } from 'lucide-react';
+import Image from 'next/image';
 import { type ChangeEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -60,9 +63,10 @@ const ImageInput = ({ name, image, onChange, error, className }: ImageInputProps
       />
       {image && !errors.image?.message && (
         <div className={s.preview}>
-          <img
+          <Image
             className={s.image}
             src={image}
+            fill
             alt="Превью"
             decoding="async"
             onLoad={() => {

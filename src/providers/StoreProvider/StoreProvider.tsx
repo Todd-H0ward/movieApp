@@ -1,30 +1,48 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 
-import { MOVIES_KEY } from '@/constants/storageKeys.ts';
-import { moviesData } from '@/stubs/moviesData.ts';
-
-import type { PropsWithChildren } from 'react';
+import { MOVIES_KEY } from '@/constants/storageKeys';
+import { moviesData } from '@/stubs/moviesData';
 
 import createStore from '@/store';
 
-const initialState = JSON.parse(localStorage.getItem(MOVIES_KEY) as string) || moviesData;
-
-const store = createStore({
-  movie: {
-    movies: initialState,
-    quickViewMovieId: null,
-  },
-});
-
-const handleStorageChange = () => {
-  const movies = store.getState().movie.movies;
-
-  localStorage.setItem(MOVIES_KEY, JSON.stringify(movies));
-};
-
-store.subscribe(handleStorageChange);
+import type { AppStore } from '@/store';
+import type { PropsWithChildren } from 'react';
 
 const StoreProvider = ({ children }: PropsWithChildren) => {
+  const [store, setStore] = useState<AppStore | null>(null);
+
+  useEffect(() => {
+    const loadData = () => {
+      const storedData = localStorage.getItem(MOVIES_KEY);
+      const movies = storedData ? JSON.parse(storedData) : moviesData;
+
+      const newStore = createStore({
+        movie: {
+          movies,
+          quickViewMovieId: null,
+        },
+      });
+
+      newStore.subscribe(() => {
+        const state = newStore.getState();
+        localStorage.setItem(MOVIES_KEY, JSON.stringify(state.movie.movies));
+      });
+
+      setStore(newStore);
+    };
+
+    if (typeof window !== 'undefined') {
+      loadData();
+    }
+  }, []);
+
+  if (!store) {
+    return null;
+  }
+
   return <Provider store={store}>{children}</Provider>;
 };
 

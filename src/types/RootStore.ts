@@ -1,4 +1,4 @@
-import type { MovieStore } from './entities/Movie.ts';
+import type { MovieStore } from './Movie.ts';
 
 export interface RootStore {
   movie: MovieStore;

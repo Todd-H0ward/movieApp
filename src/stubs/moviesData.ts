@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import type { Movie } from '../types/entities/Movie.ts';
+import type { Movie } from '../types/Movie.ts';
 
 export const moviesData: Movie[] = [
   {

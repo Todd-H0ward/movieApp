@@ -4,26 +4,29 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "lint:fix": "eslint . --fix",
     "format:fix": "prettier . --write",
     "preview": "vite preview",
     "prepare": "husky"
   },
   "dependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@hookform/resolvers": "^5.1.1",
     "@reduxjs/toolkit": "^2.8.2",
     "clsx": "^2.1.1",
+    "eslint-config-next": "^15.4.2",
     "eslint-plugin-import": "^2.32.0",
     "framer-motion": "^12.20.5",
     "lucide-react": "^0.525.0",
+    "next": "^15.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.59.0",
     "react-redux": "^9.2.0",
-    "react-router": "^7.6.3",
     "uuid": "^11.1.0",
     "yup": "^1.6.1"
   },
@@ -32,7 +35,6 @@
     "@types/node": "^24.0.7",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.5.2",
     "eslint": "^9.29.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
@@ -41,7 +43,6 @@
     "prettier": "^3.6.2",
     "sass": "^1.89.2",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.34.1",
-    "vite": "^7.0.0"
+    "typescript-eslint": "^8.34.1"
   }
 }

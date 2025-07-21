@@ -5,10 +5,21 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import { globalIgnores } from 'eslint/config';
+import { FlatCompat } from '@eslint/eslintrc';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
 
 export default [
   globalIgnores(['dist']),
   ...tseslint.configs.recommended,
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -31,6 +42,7 @@ export default [
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'only-export-components': 'off',
       'import/order': [
         'error',
         {
@@ -48,6 +60,11 @@ export default [
             },
             {
               pattern: '{@/components/**,**/components/**}',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '{@/providers/**,**/providers/**}',
               group: 'internal',
               position: 'before',
             },

@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 
