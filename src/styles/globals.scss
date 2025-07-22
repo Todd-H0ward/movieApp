@@ -1,0 +1,40 @@
+@use 'reset';
+@use 'variables';
+
+html {
+  font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  font-family: inherit;
+  background: var(--background);
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}

@@ -1,0 +1,13 @@
+.root {
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--rating-color);
+  font-weight: 700;
+  font-size: 14px;
+  background: rgba(12, 6, 6, 0.6);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}

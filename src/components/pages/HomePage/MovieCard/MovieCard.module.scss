@@ -1,0 +1,91 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      .image {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+.rating {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+}
+
+.wrapper {
+  height: 450px;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.description {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1 1 auto;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.info {
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
+
+.btn {
+  overflow: hidden;
+
+  &:hover {
+    .icon {
+      transform: translateY(0);
+    }
+
+    .btnText {
+      transform: translateX(0);
+    }
+  }
+}
+
+.icon {
+  transform: translateY(35px);
+  transition: transform 0.3s;
+}
+
+.btnText {
+  transform: translateX(-12px);
+  transition: transform 0.3s;
+}

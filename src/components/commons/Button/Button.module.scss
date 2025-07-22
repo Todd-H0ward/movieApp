@@ -1,0 +1,72 @@
+.root {
+  padding: 0.6rem 0.8rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    color 0.3s;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.solid {
+  color: var(--text);
+  background: var(--primary);
+
+  &:hover {
+    background: rgb(from var(--primary) r g b / 80%);
+  }
+
+  &:active {
+    background: rgb(from var(--primary) r g b / 60%);
+  }
+}
+
+.filled {
+  color: var(--text);
+  background: var(--secondary);
+
+  &:hover {
+    background: rgb(from var(--secondary) r g b / 80%);
+  }
+
+  &:active {
+    background: rgb(from var(--secondary) r g b / 60%);
+  }
+}
+
+.outline {
+  color: var(--primary);
+  background: transparent;
+  border: 1px solid var(--primary);
+}
+
+.clear {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.icon {
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  &:disabled {
+    color: rgb(from var(--background) r g b / 70%);
+    background: rgba(0, 0, 0, 0.1);
+  }
+}

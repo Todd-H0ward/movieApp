@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  line-height: 1.3;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.rating {
+  align-items: center;
+}
+
+.ratingValue {
+  padding: 5px 9px;
+  font-size: 0.8rem;
+}

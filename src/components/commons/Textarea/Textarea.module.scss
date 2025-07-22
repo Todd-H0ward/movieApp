@@ -1,0 +1,27 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.textarea {
+  height: 120px;
+  padding: 10px 12px;
+  flex: 1 1 auto;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  resize: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+  &::placeholder {
+    color: rgb(from var(--background) r g b / 60%);
+  }
+}
+
+.error {
+  color: var(--primary);
+  font-size: 0.9rem;
+}

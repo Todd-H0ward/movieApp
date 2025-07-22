@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  padding: 10px 12px;
+  flex: 1 1 auto;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  transition: box-shadow 0.2s;
+
+  &::placeholder {
+    color: rgb(from var(--background) r g b / 60%);
+  }
+}
+
+.error {
+  color: var(--primary);
+  font-size: 0.9rem;
+}
