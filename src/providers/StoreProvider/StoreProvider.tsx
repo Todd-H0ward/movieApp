@@ -23,6 +23,7 @@ const StoreProvider = ({ children }: PropsWithChildren) => {
         movie: {
           movies,
           quickViewMovieId: null,
+          editMovie: null,
         },
       });
 
