@@ -5,6 +5,7 @@ import type { Movie, MovieStore } from '@/types/Movie.ts';
 const initialState: MovieStore = {
   movies: [],
   quickViewMovieId: null,
+  editMovie: null,
 };
 
 const movieSlice = createSlice({
@@ -18,11 +19,22 @@ const movieSlice = createSlice({
 
       state.movies.push(action.payload);
     },
+    editMovie: (state, action: PayloadAction<Movie>) => {
+      const movieIndex = state.movies.findIndex((movie) => movie.id === action.payload.id);
+
+      state.movies[movieIndex] = action.payload;
+    },
+    deleteMovie: (state, action: PayloadAction<string>) => {
+      state.movies = state.movies.filter((movie) => movie.id !== action.payload);
+    },
     setQuickViewMovieId: (state, action: PayloadAction<string | null>) => {
       state.quickViewMovieId = action.payload;
+    },
+    setEditMovie: (state, action: PayloadAction<Movie | null>) => {
+      state.editMovie = action.payload;
     },
   },
 });
 
+export const { addMovie, setQuickViewMovieId, setEditMovie, editMovie, deleteMovie } = movieSlice.actions;
 export default movieSlice.reducer;
-export const { addMovie, setQuickViewMovieId } = movieSlice.actions;

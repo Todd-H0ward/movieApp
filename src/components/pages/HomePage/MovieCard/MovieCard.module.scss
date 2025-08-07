@@ -12,6 +12,10 @@
       .image {
         transform: scale(1.2);
       }
+
+      .editBtn {
+        opacity: 1;
+      }
     }
   }
 }
@@ -26,7 +30,7 @@
 .wrapper {
   height: 450px;
   overflow: hidden;
-  
+
   @media (max-width: 768px) {
     height: 300px;
   }
@@ -88,4 +92,28 @@
 .btnText {
   transform: translateX(-12px);
   transition: transform 0.3s;
+}
+
+.editBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  z-index: 5;
+  transition:
+    background 0.3s,
+    border 0.3s,
+    opacity 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  @media (hover: none) {
+    opacity: 1;
+  }
 }

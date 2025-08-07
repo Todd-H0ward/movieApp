@@ -1,7 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { Search } from 'lucide-react';
+import { Search, Pencil } from 'lucide-react';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 
@@ -10,7 +10,7 @@ import type { Movie } from '@/types/Movie';
 import Button from '@/components/commons/Button';
 import Rating from '@/components/commons/Rating';
 
-import { setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
+import { setEditMovie, setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
 
 import type { MouseEvent } from 'react';
 
@@ -28,6 +28,12 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
     e.stopPropagation();
 
     dispatch(setQuickViewMovieId(movie.id));
+  };
+
+  const handleEditClick = (e: MouseEvent) => {
+    e.stopPropagation();
+
+    dispatch(setEditMovie(movie));
   };
 
   const { name, originalName, year, countries, genres, director, rating, image } = movie;
@@ -51,6 +57,9 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
         <Button className={s.btn} onClick={handleQuickViewClick}>
           <Search className={s.icon} />
           <span className={s.btnText}>Быстрый просмотр</span>
+        </Button>
+        <Button className={s.editBtn} variant="icon" onClick={handleEditClick}>
+          <Pencil size={16} />
         </Button>
       </div>
     </li>
