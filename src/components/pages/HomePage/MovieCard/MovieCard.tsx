@@ -1,6 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
+import { motion } from 'framer-motion';
 import { Search, Pencil } from 'lucide-react';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
@@ -39,7 +40,20 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
   const { name, originalName, year, countries, genres, director, rating, image } = movie;
 
   return (
-    <li className={clsx(s.root, className)}>
+    <motion.li
+      className={clsx(s.root, className)}
+      layout
+      variants={{
+        hidden: {
+          y: 20,
+          opacity: 0,
+        },
+        visible: {
+          y: 0,
+          opacity: 1,
+        },
+      }}
+    >
       <Rating className={s.rating} rating={rating} />
       <div className={s.wrapper}>
         <Image className={s.image} src={image} width={380} height={450} alt={name} />
@@ -62,7 +76,7 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
           <Pencil size={16} />
         </Button>
       </div>
-    </li>
+    </motion.li>
   );
 };
 
