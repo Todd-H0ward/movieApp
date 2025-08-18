@@ -6,6 +6,7 @@ const initialState: MovieStore = {
   movies: [],
   quickViewMovieId: null,
   editMovie: null,
+  search: '',
 };
 
 const movieSlice = createSlice({
@@ -33,8 +34,11 @@ const movieSlice = createSlice({
     setEditMovie: (state, action: PayloadAction<Movie | null>) => {
       state.editMovie = action.payload;
     },
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
   },
 });
 
-export const { addMovie, setQuickViewMovieId, setEditMovie, editMovie, deleteMovie } = movieSlice.actions;
+export const { addMovie, setQuickViewMovieId, setEditMovie, editMovie, deleteMovie, setSearch } = movieSlice.actions;
 export default movieSlice.reducer;
