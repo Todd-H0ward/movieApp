@@ -2,10 +2,11 @@ import { createSelector } from '@reduxjs/toolkit';
 
 import type { RootStore } from '@/types/RootStore.ts';
 
-export const selectMovies = (state: RootStore) => state.movie.movies;
-export const selectQuickViewMovieId = (state: RootStore) => state.movie.quickViewMovieId;
-export const selectEditMovie = (state: RootStore) => state.movie.editMovie;
-export const selectSearch = (state: RootStore) => state.movie.search;
+export const moviesRootSelector = (state: RootStore) => state.movie;
+export const selectMovies = createSelector(moviesRootSelector, ({ movies }) => movies);
+export const selectQuickViewMovieId = createSelector(moviesRootSelector, ({ quickViewMovieId }) => quickViewMovieId);
+export const selectEditMovie = createSelector(moviesRootSelector, ({ editMovie }) => editMovie);
+export const selectSearch = createSelector(moviesRootSelector, ({ search }) => search);
 
 export const selectQuickViewMovie = createSelector(
   [selectMovies, selectQuickViewMovieId],
