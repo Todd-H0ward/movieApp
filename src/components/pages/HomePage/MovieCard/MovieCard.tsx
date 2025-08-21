@@ -4,6 +4,7 @@ import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
 import { Search, Pencil } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
 import type { Movie } from '@/types/Movie';
@@ -12,6 +13,8 @@ import Button from '@/components/commons/Button';
 import Rating from '@/components/commons/Rating';
 
 import { setEditMovie, setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
+
+import { ROUTES } from '@/constants/routes.ts';
 
 import type { MouseEvent } from 'react';
 
@@ -24,6 +27,7 @@ interface MovieCardProps {
 
 const MovieCard = ({ movie, className }: MovieCardProps) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleQuickViewClick = (e: MouseEvent) => {
     e.stopPropagation();
@@ -53,6 +57,7 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
           opacity: 1,
         },
       }}
+      onClick={() => router.push(ROUTES.MOVIE(movie.id))}
     >
       <Rating className={s.rating} rating={rating} />
       <div className={s.wrapper}>

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import Head from 'next/head';
 
 import '@/styles/globals.scss';
+import StoreProvider from '@/providers/StoreProvider';
 
 const inter = Inter({
   subsets: ['cyrillic', 'latin'],
@@ -25,7 +26,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="keywords" content="фильмы, кино, подборки фильмов" />
       </Head>
       <main>
-        <Component {...pageProps} />
+        <StoreProvider>
+          <Component {...pageProps} />
+        </StoreProvider>
       </main>
     </>
   );
