@@ -52,8 +52,10 @@
 }
 
 .header {
+  margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 }
 
 .rating {
@@ -61,9 +63,12 @@
 }
 
 .name {
-  margin-bottom: 10px;
   font-size: 1.4rem;
   font-weight: 700;
+}
+
+.btn {
+  margin-right: auto;
 }
 
 .originalName {

@@ -1,6 +1,6 @@
+import EditMovieModal from '@/components/commons/EditMovieModal';
 import Layout from '@/components/commons/Layout';
 import AddMovieModal from '@/components/pages/HomePage/AddMovieModal';
-import EditMovieModal from '@/components/pages/HomePage/EditMovieModal';
 import MovieList from '@/components/pages/HomePage/MovieList';
 import MovieSearch from '@/components/pages/HomePage/MovieSearch';
 import ViewMovieModal from '@/components/pages/HomePage/ViewMovieModal';

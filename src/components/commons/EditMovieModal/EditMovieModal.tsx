@@ -14,7 +14,11 @@ import { deleteMovie, editMovie, setEditMovie } from '@/store/slices/movieSlice.
 
 import s from './EditMovieModal.module.scss';
 
-const EditMovieModal = () => {
+interface EditMovieModalProps {
+  onDelete?: () => void;
+}
+
+const EditMovieModal = ({ onDelete }: EditMovieModalProps) => {
   const movie = useSelector(selectEditMovie);
   const dispatch = useDispatch();
 
@@ -40,6 +44,7 @@ const EditMovieModal = () => {
     if (movie) {
       dispatch(deleteMovie(movie.id));
       onModalClose();
+      onDelete?.();
     }
   };
 

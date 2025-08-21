@@ -1,23 +1,28 @@
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Edit } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import Button from '@/components/commons/Button';
+import EditMovieModal from '@/components/commons/EditMovieModal';
 import Layout from '@/components/commons/Layout';
 import Rating from '@/components/commons/Rating';
 import MovieInfoList from '@/components/pages/MoviePage/MovieInfoList';
 
 import { selectMovies } from '@/store/selectors/movieSelectors.ts';
+import { setEditMovie } from '@/store/slices/movieSlice.ts';
 
 import { ROUTES } from '@/constants/routes.ts';
 
 import s from './MoviePage.module.scss';
 
 const MoviePage = () => {
-  const movieId = useRouter().query.movieId as string;
+  const router = useRouter();
   const movies = useSelector(selectMovies);
+  const dispatch = useDispatch();
 
+  const movieId = router.query.movieId as string;
   const movie = movies.find(({ id }) => id === movieId);
 
   if (!movie) {
@@ -42,6 +47,9 @@ const MoviePage = () => {
       <section className={s.info}>
         <header className={s.header}>
           <h1 className={s.name}>{name}</h1>
+          <Button className={s.btn} variant="icon" onClick={() => dispatch(setEditMovie(movie))}>
+            <Edit />
+          </Button>
           <Rating className={s.rating} rating={movie.rating} />
         </header>
         <h2 className={s.originalName}>{originalName}</h2>
@@ -52,6 +60,7 @@ const MoviePage = () => {
         <h3 className={s.title}>Описание</h3>
         <p className={s.description}>{movie.description}</p>
       </section>
+      <EditMovieModal onDelete={() => router.push(ROUTES.HOME)} />
     </Layout>
   );
 };
