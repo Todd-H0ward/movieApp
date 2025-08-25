@@ -1,0 +1,31 @@
+.root {
+  position: relative;
+}
+
+.btn {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition:
+    background 0.3s,
+    border 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.list {
+  position: absolute;
+  bottom: -50px;
+  right: 0;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

@@ -2,14 +2,16 @@
 
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
-import { Search, Pencil } from 'lucide-react';
+import { Pencil, Search } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
+import { DropdownItem } from '@/types/DropdownItem.ts';
 import type { Movie } from '@/types/Movie';
 
 import Button from '@/components/commons/Button';
+import Dropdown from '@/components/commons/Dropdown';
 import Rating from '@/components/commons/Rating';
 
 import { setEditMovie, setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
@@ -35,11 +37,13 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
     dispatch(setQuickViewMovieId(movie.id));
   };
 
-  const handleEditClick = (e: MouseEvent) => {
-    e.stopPropagation();
-
-    dispatch(setEditMovie(movie));
-  };
+  const dropdownItems: DropdownItem[] = [
+    {
+      icon: <Pencil size={20} />,
+      value: 'Редактировать',
+      onClick: () => dispatch(setEditMovie(movie)),
+    },
+  ];
 
   const { name, originalName, year, countries, genres, director, rating, image } = movie;
 
@@ -77,9 +81,7 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
           <Search className={s.icon} />
           <span className={s.btnText}>Быстрый просмотр</span>
         </Button>
-        <Button className={s.editBtn} variant="icon" onClick={handleEditClick}>
-          <Pencil size={16} />
-        </Button>
+        <Dropdown className={s.dropdown} items={dropdownItems} />
       </div>
     </motion.li>
   );
