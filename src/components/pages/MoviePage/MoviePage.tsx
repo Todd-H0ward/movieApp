@@ -1,4 +1,5 @@
 import { ArrowLeft, Edit } from 'lucide-react';
+import Error from 'next/error';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -9,6 +10,7 @@ import EditMovieModal from '@/components/commons/EditMovieModal';
 import Layout from '@/components/commons/Layout';
 import Rating from '@/components/commons/Rating';
 import MovieInfoList from '@/components/pages/MoviePage/MovieInfoList';
+import NotFoundPage from '@/components/pages/NotFoundPage';
 
 import { selectMovies } from '@/store/selectors/movieSelectors.ts';
 import { setEditMovie } from '@/store/slices/movieSlice.ts';
@@ -26,8 +28,7 @@ const MoviePage = () => {
   const movie = movies.find(({ id }) => id === movieId);
 
   if (!movie) {
-    router.replace('/404');
-    return;
+    return <NotFoundPage />;
   }
 
   const { image, name, originalName } = movie;
