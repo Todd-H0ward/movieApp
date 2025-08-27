@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.icon {
+  color: var(--primary);
+}
+
+.name {
+  font-weight: bold;
+}
+
+.controls {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+
+  * {
+    flex: 1 1 auto;
+  }
+}

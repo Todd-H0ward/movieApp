@@ -15,5 +15,6 @@ export interface MovieStore {
   movies: Movie[];
   quickViewMovieId: string | null;
   editMovie: Movie | null;
+  deleteMovie: Movie | null;
   search: string;
 }

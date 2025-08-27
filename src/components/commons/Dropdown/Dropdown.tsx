@@ -1,11 +1,13 @@
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
 import { EllipsisVertical } from 'lucide-react';
-import { useState, type MouseEvent } from 'react';
+import { useState, type MouseEvent, useRef } from 'react';
 
 import { DropdownItem } from '@/types/DropdownItem.ts';
 
 import Button from '@/components/commons/Button';
+
+import { useClickOutside } from '@/hooks/useClickOutside.ts';
 
 import s from './Dropdown.module.scss';
 
@@ -16,12 +18,19 @@ interface DropdownProps {
 
 const Dropdown = ({ items, className }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  const closeDropdown = () => {
+    setIsOpen(false);
+  };
 
   const handleClick = (e: MouseEvent) => {
     e.stopPropagation();
 
     setIsOpen((prev) => !prev);
   };
+
+  useClickOutside(listRef, closeDropdown, true);
 
   return (
     <div className={clsx(s.root, className)}>
@@ -30,6 +39,7 @@ const Dropdown = ({ items, className }: DropdownProps) => {
       </Button>
       {isOpen && (
         <motion.ul
+          ref={listRef}
           className={s.list}
           initial={{
             scale: 0,
@@ -47,16 +57,18 @@ const Dropdown = ({ items, className }: DropdownProps) => {
             },
           }}
         >
-          {items.map((item) => (
+          {items.map(({ icon, value, onClick }) => (
             <motion.li
-              key={item.value}
+              key={value}
               className={s.item}
               onClick={(e: MouseEvent) => {
                 e.stopPropagation();
-                item.onClick();
+
+                closeDropdown();
+                onClick();
               }}
             >
-              {item.icon} {item.value}
+              {icon} {value}
             </motion.li>
           ))}
         </motion.ul>

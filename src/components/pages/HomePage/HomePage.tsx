@@ -1,3 +1,4 @@
+import DeleteMovieModal from '@/components/commons/DeleteMovieModal';
 import EditMovieModal from '@/components/commons/EditMovieModal';
 import Layout from '@/components/commons/Layout';
 import AddMovieModal from '@/components/pages/HomePage/AddMovieModal';
@@ -18,6 +19,7 @@ const HomePage = () => {
       <MovieList />
       <ViewMovieModal />
       <EditMovieModal />
+      <DeleteMovieModal />
     </Layout>
   );
 };

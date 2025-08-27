@@ -6,6 +6,7 @@ export const moviesRootSelector = (state: RootStore) => state.movie;
 export const selectMovies = createSelector(moviesRootSelector, ({ movies }) => movies);
 export const selectQuickViewMovieId = createSelector(moviesRootSelector, ({ quickViewMovieId }) => quickViewMovieId);
 export const selectEditMovie = createSelector(moviesRootSelector, ({ editMovie }) => editMovie);
+export const selectDeleteMovie = createSelector(moviesRootSelector, ({ deleteMovie }) => deleteMovie);
 export const selectSearch = createSelector(moviesRootSelector, ({ search }) => search);
 
 export const selectQuickViewMovie = createSelector(

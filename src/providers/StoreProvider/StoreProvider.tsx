@@ -24,6 +24,7 @@ const StoreProvider = ({ children }: PropsWithChildren) => {
           movies,
           quickViewMovieId: null,
           editMovie: null,
+          deleteMovie: null,
           search: '',
         },
       });

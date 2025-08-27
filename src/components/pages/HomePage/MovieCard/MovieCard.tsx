@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
-import { Pencil, Search } from 'lucide-react';
+import { DeleteIcon, Pencil, Search } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
@@ -14,7 +14,7 @@ import Button from '@/components/commons/Button';
 import Dropdown from '@/components/commons/Dropdown';
 import Rating from '@/components/commons/Rating';
 
-import { setEditMovie, setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
+import { setDeleteMovie, setEditMovie, setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
 
 import { ROUTES } from '@/constants/routes.ts';
 
@@ -43,6 +43,11 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
       value: 'Редактировать',
       onClick: () => dispatch(setEditMovie(movie)),
     },
+    {
+      icon: <DeleteIcon size={20} />,
+      value: 'Удалить',
+      onClick: () => dispatch(setDeleteMovie(movie)),
+    },
   ];
 
   const { name, originalName, year, countries, genres, director, rating, image } = movie;
@@ -65,6 +70,7 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
     >
       <Rating className={s.rating} rating={rating} />
       <div className={s.wrapper}>
+        <div className={s.mask}></div>
         <Image className={s.image} src={image} width={380} height={450} alt={name} />
       </div>
       <div className={s.description}>
