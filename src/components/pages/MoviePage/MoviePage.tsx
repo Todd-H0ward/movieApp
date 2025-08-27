@@ -26,7 +26,8 @@ const MoviePage = () => {
   const movie = movies.find(({ id }) => id === movieId);
 
   if (!movie) {
-    return null;
+    router.replace('/404');
+    return;
   }
 
   const { image, name, originalName } = movie;
@@ -60,7 +61,7 @@ const MoviePage = () => {
         <h3 className={s.title}>Описание</h3>
         <p className={s.description}>{movie.description}</p>
       </section>
-      <EditMovieModal onDelete={() => router.push(ROUTES.HOME)} />
+      <EditMovieModal />
     </Layout>
   );
 };
