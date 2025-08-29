@@ -1,11 +1,13 @@
+'use client';
+
 import { ArrowLeft, Edit } from 'lucide-react';
-import Error from 'next/error';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '@/components/commons/Button';
+import DeleteMovieModal from '@/components/commons/DeleteMovieModal';
 import EditMovieModal from '@/components/commons/EditMovieModal';
 import Layout from '@/components/commons/Layout';
 import Rating from '@/components/commons/Rating';
@@ -13,7 +15,7 @@ import MovieInfoList from '@/components/pages/MoviePage/MovieInfoList';
 import NotFoundPage from '@/components/pages/NotFoundPage';
 
 import { selectMovies } from '@/store/selectors/movieSelectors.ts';
-import { setEditMovie } from '@/store/slices/movieSlice.ts';
+import { setDeleteMovie, setEditMovie } from '@/store/slices/movieSlice.ts';
 
 import { ROUTES } from '@/constants/routes.ts';
 
@@ -27,8 +29,12 @@ const MoviePage = () => {
   const movieId = router.query.movieId as string;
   const movie = movies.find(({ id }) => id === movieId);
 
-  if (!movie) {
+  if (!movie && typeof window !== 'undefined') {
     return <NotFoundPage />;
+  }
+
+  if (!movie) {
+    return null;
   }
 
   const { image, name, originalName } = movie;
@@ -62,7 +68,11 @@ const MoviePage = () => {
         <h3 className={s.title}>Описание</h3>
         <p className={s.description}>{movie.description}</p>
       </section>
+      <Button className={s.deleteBtn} onClick={() => dispatch(setDeleteMovie(movie))}>
+        Удалить фильм
+      </Button>
       <EditMovieModal />
+      <DeleteMovieModal onDelete={() => router.push(ROUTES.HOME)} />
     </Layout>
   );
 };

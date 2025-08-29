@@ -1,6 +1,6 @@
 .root {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
   grid-template-rows: auto 1fr;
   grid-gap: 1.5rem;
 
@@ -86,4 +86,8 @@
 
 .description {
   line-height: 1.6;
+}
+
+.deleteBtn {
+  grid-column: 2 / 3;
 }
