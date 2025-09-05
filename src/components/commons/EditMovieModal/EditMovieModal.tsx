@@ -1,6 +1,5 @@
 'use client';
 
-import { type MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import type { AddMovieSchema } from '@/types/AddMovieSchema.ts';
@@ -10,7 +9,7 @@ import Modal from '@/components/commons/Modal';
 import MovieForm from '@/components/commons/MovieForm';
 
 import { selectEditMovie } from '@/store/selectors/movieSelectors.ts';
-import { deleteMovie, editMovie, setEditMovie } from '@/store/slices/movieSlice.ts';
+import { editMovie, setEditMovie } from '@/store/slices/movieSlice.ts';
 
 import s from './EditMovieModal.module.scss';
 
@@ -34,15 +33,6 @@ const EditMovieModal = () => {
     onModalClose();
   };
 
-  const handleDelete = (e: MouseEvent) => {
-    e.stopPropagation();
-
-    if (movie) {
-      dispatch(deleteMovie(movie.id));
-      onModalClose();
-    }
-  };
-
   return (
     <Modal isOpen={!!movie} onClose={onModalClose} title="Редактировать фильм">
       <MovieForm
@@ -51,8 +41,8 @@ const EditMovieModal = () => {
         footer={
           <div className={s.controls}>
             <Button type="submit">Сохранить</Button>
-            <Button onClick={handleDelete} type="button" variant="filled">
-              Удалить
+            <Button onClick={onModalClose} type="button" variant="filled">
+              Отменить
             </Button>
           </div>
         }

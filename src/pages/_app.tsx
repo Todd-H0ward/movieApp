@@ -1,6 +1,9 @@
+import { AnimatePresence } from 'framer-motion';
 import { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
+
+import StoreProvider from '@/providers/StoreProvider';
 
 import '@/styles/globals.scss';
 
@@ -10,7 +13,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps, router }: AppProps) => {
   return (
     <>
       <style jsx global>{`
@@ -24,9 +27,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="keywords" content="фильмы, кино, подборки фильмов" />
       </Head>
-      <main>
-        <Component {...pageProps} />
-      </main>
+      <StoreProvider>
+        <AnimatePresence mode="wait" initial={false}>
+          <Component key={router.route} {...pageProps} />
+        </AnimatePresence>
+      </StoreProvider>
     </>
   );
 };

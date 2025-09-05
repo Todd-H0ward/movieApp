@@ -1,5 +1,9 @@
+'use client';
+
 import { Trash } from 'lucide-react';
-import { ChangeEvent } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
+import { ChangeEvent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '@/components/commons/Button';
@@ -13,9 +17,26 @@ import s from './MovieSearch.module.scss';
 const MovieSearch = () => {
   const dispatch = useDispatch();
   const search = useSelector(selectSearch);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const searchValue = searchParams.get('search');
+
+    if (searchValue) {
+      dispatch(setSearch(searchValue));
+    }
+  }, [dispatch, searchParams]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearch(e.target.value));
+    const searchValue = e.target.value;
+    const params = new URLSearchParams(searchParams);
+
+    dispatch(setSearch(searchValue));
+    params.set('search', searchValue);
+
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   const clearInput = () => {

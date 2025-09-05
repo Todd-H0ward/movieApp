@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  @media (max-width: 425px) {
+    gap: 10px;
+  }
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.content {
+  position: relative;
+}
+
+.error {
+  font-size: 20rem;
+  font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 15rem;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 10rem;
+  }
+}
+
+.image {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  height: auto;
+
+  @media (max-width: 768px) {
+    max-width: 150px;
+  }
+
+  @media (max-width: 425px) {
+    max-width: 100px;
+  }
+}

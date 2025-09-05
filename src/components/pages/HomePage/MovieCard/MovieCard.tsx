@@ -2,16 +2,21 @@
 
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
-import { Search, Pencil } from 'lucide-react';
+import { DeleteIcon, Pencil, Search } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
+import { DropdownItem } from '@/types/DropdownItem.ts';
 import type { Movie } from '@/types/Movie';
 
 import Button from '@/components/commons/Button';
+import Dropdown from '@/components/commons/Dropdown';
 import Rating from '@/components/commons/Rating';
 
-import { setEditMovie, setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
+import { setDeleteMovie, setEditMovie, setQuickViewMovieId } from '@/store/slices/movieSlice.ts';
+
+import { ROUTES } from '@/constants/routes.ts';
 
 import type { MouseEvent } from 'react';
 
@@ -24,6 +29,7 @@ interface MovieCardProps {
 
 const MovieCard = ({ movie, className }: MovieCardProps) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleQuickViewClick = (e: MouseEvent) => {
     e.stopPropagation();
@@ -31,11 +37,18 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
     dispatch(setQuickViewMovieId(movie.id));
   };
 
-  const handleEditClick = (e: MouseEvent) => {
-    e.stopPropagation();
-
-    dispatch(setEditMovie(movie));
-  };
+  const dropdownItems: DropdownItem[] = [
+    {
+      icon: <Pencil size={20} />,
+      value: 'Редактировать',
+      onClick: () => dispatch(setEditMovie(movie)),
+    },
+    {
+      icon: <DeleteIcon size={20} />,
+      value: 'Удалить',
+      onClick: () => dispatch(setDeleteMovie(movie)),
+    },
+  ];
 
   const { name, originalName, year, countries, genres, director, rating, image } = movie;
 
@@ -53,9 +66,11 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
           opacity: 1,
         },
       }}
+      onClick={() => router.push(ROUTES.MOVIE(movie.id))}
     >
       <Rating className={s.rating} rating={rating} />
       <div className={s.wrapper}>
+        <div className={s.mask}></div>
         <Image className={s.image} src={image} width={380} height={450} alt={name} />
       </div>
       <div className={s.description}>
@@ -72,9 +87,7 @@ const MovieCard = ({ movie, className }: MovieCardProps) => {
           <Search className={s.icon} />
           <span className={s.btnText}>Быстрый просмотр</span>
         </Button>
-        <Button className={s.editBtn} variant="icon" onClick={handleEditClick}>
-          <Pencil size={16} />
-        </Button>
+        <Dropdown className={s.dropdown} items={dropdownItems} />
       </div>
     </motion.li>
   );

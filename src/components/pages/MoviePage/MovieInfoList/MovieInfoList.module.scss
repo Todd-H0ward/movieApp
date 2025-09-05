@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 25px;
+}
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  span {
+    font-weight: 600;
+  }
+}

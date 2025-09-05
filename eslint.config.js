@@ -43,6 +43,7 @@ export default [
       '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'only-export-components': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       'import/order': [
         'error',
         {
