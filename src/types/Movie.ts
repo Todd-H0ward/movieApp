@@ -17,4 +17,5 @@ export interface MovieStore {
   editMovie: Movie | null;
   deleteMovie: Movie | null;
   search: string;
+  isLoading: boolean;
 }

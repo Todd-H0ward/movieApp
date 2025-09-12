@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { TakeableChannel } from 'redux-saga';
 
 import type { Movie, MovieStore } from '@/types/Movie.ts';
 
@@ -8,6 +9,7 @@ const initialState: MovieStore = {
   deleteMovie: null,
   editMovie: null,
   search: '',
+  isLoading: false,
 };
 
 const movieSlice = createSlice({
@@ -41,9 +43,25 @@ const movieSlice = createSlice({
     setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload;
     },
+    fetchMoviesRequest: (state) => {
+      state.isLoading = true;
+    },
+    fetchMoviesSuccess: (state, action: PayloadAction<Movie[]>) => {
+      state.movies = action.payload;
+      state.isLoading = false;
+    },
   },
 });
 
-export const { addMovie, setQuickViewMovieId, setEditMovie, setDeleteMovie, editMovie, deleteMovie, setSearch } =
-  movieSlice.actions;
+export const {
+  addMovie,
+  setQuickViewMovieId,
+  setEditMovie,
+  setDeleteMovie,
+  editMovie,
+  deleteMovie,
+  setSearch,
+  fetchMoviesRequest,
+  fetchMoviesSuccess,
+} = movieSlice.actions;
 export default movieSlice.reducer;
