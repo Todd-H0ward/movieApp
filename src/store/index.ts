@@ -22,7 +22,7 @@ const createStore = (initialState?: RootStore) => {
   const store = configureStore<RootStore>({
     reducer: rootReducer,
     preloadedState: initialState,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
   });
 
   sagaMiddleware.run(rootSaga);

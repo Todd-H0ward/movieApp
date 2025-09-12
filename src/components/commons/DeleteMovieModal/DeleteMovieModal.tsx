@@ -5,7 +5,7 @@ import Button from '@/components/commons/Button';
 import Modal from '@/components/commons/Modal';
 
 import { selectDeleteMovie } from '@/store/selectors/movieSelectors.ts';
-import { deleteMovie, setDeleteMovie } from '@/store/slices/movieSlice.ts';
+import { deleteMovieRequest, setDeleteMovie } from '@/store/slices/movieSlice.ts';
 
 import type { MouseEvent } from 'react';
 
@@ -27,7 +27,7 @@ const DeleteMovieModal = ({ onDelete }: DeleteMovieModal) => {
     e.stopPropagation();
 
     if (movie) {
-      dispatch(deleteMovie(movie.id));
+      dispatch(deleteMovieRequest(movie.id));
       onModalClose();
       onDelete?.();
     }

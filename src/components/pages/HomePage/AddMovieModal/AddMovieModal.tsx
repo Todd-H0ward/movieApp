@@ -11,7 +11,7 @@ import Button from '@/components/commons/Button';
 import Modal from '@/components/commons/Modal';
 import MovieForm from '@/components/commons/MovieForm';
 
-import { addMovie } from '@/store/slices/movieSlice.ts';
+import { createMovieRequest } from '@/store/slices/movieSlice.ts';
 
 import s from './AddMovieModal.module.scss';
 
@@ -29,7 +29,7 @@ const AddMovieModal = () => {
       image: data.image || '',
     };
 
-    dispatch(addMovie(newMovie));
+    dispatch(createMovieRequest(newMovie));
     onModalClose();
   };
 

@@ -12,12 +12,14 @@
 ## Как запустить проект
 
 1. Клонируйте репозиторий
+
 ```bash
-git clone https://github.com/Todd-H0ward/movieApp 
+git clone https://github.com/Todd-H0ward/movieApp
 cd movieApp
 ```
 
 2. Установите зависимости
+
 ```bash
 npm install
 # или
@@ -25,6 +27,7 @@ yarn
 ```
 
 3. Запустите проект
+
 ```bash
 npm run dev
 # или
@@ -35,6 +38,7 @@ yarn dev
    Перейдите по адресу [http://localhost:3000](http://localhost:3000) в браузере, чтобы увидеть результат.
 
 5. Для сборки проекта используйте команду:
+
 ```bash
 npm run build
 # или
@@ -42,6 +46,7 @@ yarn build
 ```
 
 6. Для запуска собранного проекта используйте команду:
+
 ```bash
 npm run start
 # или
