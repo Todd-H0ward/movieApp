@@ -246,6 +246,56 @@
       "rating": 8.1,
       "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/10592371/9a6fdb22-6ec9-47ac-ba71-f08b0c1e5026/3840x",
       "description": "Идёт третий год Войн клонов. Галактическая Республика, некогда бывшая спокойным и гармоничным государством, превратилась в поле битвы между армиями клонов, возглавляемых канцлером Палпатином, и армадами дроидов, которых ведёт граф Дуку, тёмный лорд ситхов."
+    },
+    {
+      "id": "9aa323b5-4fa1-470b-94d7-76ee73e0e848",
+      "description": "sdsfsf",
+      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/91b71c6a-dc55-4574-9226-894943d77a5c/3840x",
+      "rating": 1.7,
+      "director": "dsf",
+      "genres": [
+        "sd"
+      ],
+      "countries": [
+        "dsfds"
+      ],
+      "year": 2001,
+      "originalName": "dsfds",
+      "name": "dsfds"
+    },
+    {
+      "id": "65fb19c7-921a-4031-b1e6-3bd23b6f2b98",
+      "description": "dsfsdfs",
+      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/91b71c6a-dc55-4574-9226-894943d77a5c/3840x",
+      "rating": 2,
+      "director": "dsfsfs",
+      "genres": [
+        "sdfds",
+        "dsfsfsd"
+      ],
+      "countries": [
+        "sdffds",
+        "dsffds"
+      ],
+      "year": 2001,
+      "originalName": "sdffds",
+      "name": "sdfds"
+    },
+    {
+      "id": "a18238b8-d32d-4118-8274-1f5d5f417ba1",
+      "description": "dsfafdsfsdaf",
+      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/91b71c6a-dc55-4574-9226-894943d77a5c/3840x",
+      "rating": 2,
+      "director": "fdsfds",
+      "genres": [
+        "sfdfds"
+      ],
+      "countries": [
+        "sdfds"
+      ],
+      "year": 2001,
+      "originalName": "ddsfaf",
+      "name": "dsff"
     }
   ]
 }

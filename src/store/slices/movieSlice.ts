@@ -16,11 +16,6 @@ const movieSlice = createSlice({
   name: 'movie',
   initialState,
   reducers: {
-    editMovie: (state, action: PayloadAction<Movie>) => {
-      const movieIndex = state.movies.findIndex((movie) => movie.id === action.payload.id);
-
-      state.movies[movieIndex] = action.payload;
-    },
     setQuickViewMovieId: (state, action: PayloadAction<string | null>) => {
       state.quickViewMovieId = action.payload;
     },
@@ -48,6 +43,12 @@ const movieSlice = createSlice({
     deleteMovieSuccess: (state, action: PayloadAction<Movie>) => {
       state.movies = state.movies.filter((movie) => movie.id !== action.payload.id);
     },
+    editMovieRequest: (state, action: PayloadAction<Movie>) => {},
+    editMovieSuccess: (state, action: PayloadAction<Movie>) => {
+      const movieIndex = state.movies.findIndex((movie) => movie.id === action.payload.id);
+
+      state.movies[movieIndex] = action.payload;
+    },
   },
 });
 
@@ -55,7 +56,6 @@ export const {
   setQuickViewMovieId,
   setEditMovie,
   setDeleteMovie,
-  editMovie,
   setSearch,
   fetchMoviesRequest,
   fetchMoviesSuccess,
@@ -63,5 +63,7 @@ export const {
   createMovieSuccess,
   deleteMovieRequest,
   deleteMovieSuccess,
+  editMovieRequest,
+  editMovieSuccess,
 } = movieSlice.actions;
 export default movieSlice.reducer;

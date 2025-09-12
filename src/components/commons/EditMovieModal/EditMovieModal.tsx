@@ -9,7 +9,7 @@ import Modal from '@/components/commons/Modal';
 import MovieForm from '@/components/commons/MovieForm';
 
 import { selectEditMovie } from '@/store/selectors/movieSelectors.ts';
-import { editMovie, setEditMovie } from '@/store/slices/movieSlice.ts';
+import { editMovieRequest, setEditMovie } from '@/store/slices/movieSlice.ts';
 
 import s from './EditMovieModal.module.scss';
 
@@ -25,7 +25,7 @@ const EditMovieModal = () => {
     if (!movie) return;
 
     dispatch(
-      editMovie({
+      editMovieRequest({
         id: movie.id,
         ...data,
       }),

@@ -8,16 +8,18 @@ import {
   createMovieSuccess,
   deleteMovieRequest,
   deleteMovieSuccess,
+  editMovieRequest,
+  editMovieSuccess,
   fetchMoviesRequest,
   fetchMoviesSuccess,
 } from '@/store/slices/movieSlice.ts';
 
-import { createMovie, deleteMovie, fetchMovies } from '@/api/movieApi.ts';
+import { API } from '@/api';
 
 export function* fetchMoviesWorker(): any {
   try {
-    const response = yield call(fetchMovies);
-    yield put(fetchMoviesSuccess(response));
+    const response = yield call(API.get, '/movies');
+    yield put(fetchMoviesSuccess(response.data));
   } catch (error) {
     console.error(error);
   }
@@ -25,8 +27,8 @@ export function* fetchMoviesWorker(): any {
 
 export function* createMoviesWorker(action: PayloadAction<Movie>): any {
   try {
-    const response = yield call(createMovie, action.payload);
-    yield put(createMovieSuccess(response));
+    const response = yield call(API.post, '/movies', action.payload);
+    yield put(createMovieSuccess(response.data));
   } catch (error) {
     console.error(error);
   }
@@ -34,8 +36,17 @@ export function* createMoviesWorker(action: PayloadAction<Movie>): any {
 
 export function* deleteMoviesWorker(action: PayloadAction<string>): any {
   try {
-    const response = yield call(deleteMovie, action.payload);
-    yield put(deleteMovieSuccess(response));
+    const response = yield call(API.delete, `/movies/${action.payload}`);
+    yield put(deleteMovieSuccess(response.data));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function* editMoviesWorker(action: PayloadAction<Movie>): any {
+  try {
+    const response = yield call(API.put, `/movies/${action.payload.id}`, action.payload);
+    yield put(editMovieSuccess(response.data));
   } catch (error) {
     console.error(error);
   }
@@ -45,4 +56,5 @@ export function* movieSaga() {
   yield takeEvery(fetchMoviesRequest.type, fetchMoviesWorker);
   yield takeEvery(createMovieRequest.type, createMoviesWorker);
   yield takeEvery(deleteMovieRequest.type, deleteMoviesWorker);
+  yield takeEvery(editMovieRequest.type, editMoviesWorker);
 }
