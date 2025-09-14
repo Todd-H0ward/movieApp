@@ -29,8 +29,10 @@ yarn
 3. Запустите проект
 
 ```bash
+npm run start:server
 npm run dev
 # или
+yarn start:server
 yarn dev
 ```
 
