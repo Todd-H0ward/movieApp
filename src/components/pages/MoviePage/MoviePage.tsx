@@ -4,18 +4,20 @@ import { ArrowLeft, Edit } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '@/components/commons/Button';
 import DeleteMovieModal from '@/components/commons/DeleteMovieModal';
 import EditMovieModal from '@/components/commons/EditMovieModal';
 import Layout from '@/components/commons/Layout';
+import Loader from '@/components/commons/Loader';
 import Rating from '@/components/commons/Rating';
 import MovieInfoList from '@/components/pages/MoviePage/MovieInfoList';
 import NotFoundPage from '@/components/pages/NotFoundPage';
 
-import { selectMovies } from '@/store/selectors/movieSelectors.ts';
-import { setDeleteMovie, setEditMovie } from '@/store/slices/movieSlice.ts';
+import { selectIsLoading, selectMovie } from '@/store/selectors/movieSelectors.ts';
+import { fetchMovieRequest, setDeleteMovie, setEditMovie } from '@/store/slices/movieSlice.ts';
 
 import { ROUTES } from '@/constants/routes.ts';
 
@@ -23,11 +25,23 @@ import s from './MoviePage.module.scss';
 
 const MoviePage = () => {
   const router = useRouter();
-  const movies = useSelector(selectMovies);
+  const movie = useSelector(selectMovie);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const movieId = router.query.movieId as string;
-  const movie = movies.find(({ id }) => id === movieId);
+
+  useEffect(() => {
+    dispatch(fetchMovieRequest(movieId));
+  }, [dispatch, movieId]);
+
+  if (isLoading) {
+    return (
+      <div className={s.loader}>
+        <Loader />
+      </div>
+    );
+  }
 
   if (!movie && typeof window !== 'undefined') {
     return <NotFoundPage />;

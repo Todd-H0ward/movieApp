@@ -42,32 +42,6 @@
       "description": "Человечество расселилось по далёким планетам, а за власть над обитаемым пространством постоянно борются разные могущественные семьи. В центре противостояния оказывается пустынная планета Арракис. Там обитают гигантские песчаные черви, а в пещерах затаились скитальцы-фремены, но её главная ценность — специя, самое важное вещество во Вселенной. Тот, кто контролирует Арракис, контролирует специю, а тот, кто контролирует специю, контролирует Вселенную."
     },
     {
-      "id": "3",
-      "name": "Дюна: Часть вторая",
-      "originalName": "Dune: Part Two",
-      "year": 2024,
-      "countries": [
-        "США",
-        "Канада",
-        "ОАЭ",
-        "Венгрия",
-        "Италия",
-        "Новая Зеландия",
-        "Иордания",
-        "Гамбия"
-      ],
-      "genres": [
-        "фантастика",
-        "боевик",
-        "драма",
-        "приключения"
-      ],
-      "director": "Дени Вильнёв",
-      "rating": 7.7,
-      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/0c67265b-6631-4e25-b89c-3ddf4e5a1ee7/3840x",
-      "description": "Фильм продолжает историю Пола Атрейдеса, который объединяется с фрименами Арракиса, чтобы отомстить за свою семью и вести войну против Дома Харконненов"
-    },
-    {
       "id": "4",
       "name": "Бегущий по лезвию 2049",
       "originalName": "Blade Runner 2049",
@@ -246,56 +220,6 @@
       "rating": 8.1,
       "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/10592371/9a6fdb22-6ec9-47ac-ba71-f08b0c1e5026/3840x",
       "description": "Идёт третий год Войн клонов. Галактическая Республика, некогда бывшая спокойным и гармоничным государством, превратилась в поле битвы между армиями клонов, возглавляемых канцлером Палпатином, и армадами дроидов, которых ведёт граф Дуку, тёмный лорд ситхов."
-    },
-    {
-      "id": "9aa323b5-4fa1-470b-94d7-76ee73e0e848",
-      "description": "sdsfsf",
-      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/91b71c6a-dc55-4574-9226-894943d77a5c/3840x",
-      "rating": 1.7,
-      "director": "dsf",
-      "genres": [
-        "sd"
-      ],
-      "countries": [
-        "dsfds"
-      ],
-      "year": 2001,
-      "originalName": "dsfds",
-      "name": "dsfds"
-    },
-    {
-      "id": "65fb19c7-921a-4031-b1e6-3bd23b6f2b98",
-      "description": "dsfsdfs",
-      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/91b71c6a-dc55-4574-9226-894943d77a5c/3840x",
-      "rating": 2,
-      "director": "dsfsfs",
-      "genres": [
-        "sdfds",
-        "dsfsfsd"
-      ],
-      "countries": [
-        "sdffds",
-        "dsffds"
-      ],
-      "year": 2001,
-      "originalName": "sdffds",
-      "name": "sdfds"
-    },
-    {
-      "id": "a18238b8-d32d-4118-8274-1f5d5f417ba1",
-      "description": "dsfafdsfsdaf",
-      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/91b71c6a-dc55-4574-9226-894943d77a5c/3840x",
-      "rating": 2,
-      "director": "fdsfds",
-      "genres": [
-        "sfdfds"
-      ],
-      "countries": [
-        "sdfds"
-      ],
-      "year": 2001,
-      "originalName": "ddsfaf",
-      "name": "dsff"
     }
   ]
 }

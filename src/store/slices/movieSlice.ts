@@ -1,10 +1,10 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { TakeableChannel } from 'redux-saga';
 
 import type { Movie, MovieStore } from '@/types/Movie.ts';
 
 const initialState: MovieStore = {
   movies: [],
+  movie: null,
   quickViewMovieId: null,
   deleteMovie: null,
   editMovie: null,
@@ -35,6 +35,13 @@ const movieSlice = createSlice({
       state.movies = action.payload;
       state.isLoading = false;
     },
+    fetchMovieRequest: (state, action: PayloadAction<string>) => {
+      state.isLoading = true;
+    },
+    fetchMovieSuccess: (state, action: PayloadAction<Movie | null>) => {
+      state.movie = action.payload;
+      state.isLoading = false;
+    },
     createMovieRequest: (state, action: PayloadAction<Movie>) => {},
     createMovieSuccess: (state, action: PayloadAction<Movie>) => {
       state.movies.push(action.payload);
@@ -59,6 +66,8 @@ export const {
   setSearch,
   fetchMoviesRequest,
   fetchMoviesSuccess,
+  fetchMovieRequest,
+  fetchMovieSuccess,
   createMovieRequest,
   createMovieSuccess,
   deleteMovieRequest,

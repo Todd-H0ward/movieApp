@@ -4,10 +4,12 @@ import type { RootStore } from '@/types/RootStore.ts';
 
 export const moviesRootSelector = (state: RootStore) => state.movie;
 export const selectMovies = createSelector(moviesRootSelector, ({ movies }) => movies);
+export const selectMovie = createSelector(moviesRootSelector, ({ movie }) => movie);
 export const selectQuickViewMovieId = createSelector(moviesRootSelector, ({ quickViewMovieId }) => quickViewMovieId);
 export const selectEditMovie = createSelector(moviesRootSelector, ({ editMovie }) => editMovie);
 export const selectDeleteMovie = createSelector(moviesRootSelector, ({ deleteMovie }) => deleteMovie);
 export const selectSearch = createSelector(moviesRootSelector, ({ search }) => search);
+export const selectIsLoading = createSelector(moviesRootSelector, ({ isLoading }) => isLoading);
 
 export const selectQuickViewMovie = createSelector(
   [selectMovies, selectQuickViewMovieId],

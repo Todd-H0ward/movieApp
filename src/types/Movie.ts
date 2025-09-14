@@ -13,6 +13,7 @@ export type Movie = {
 
 export interface MovieStore {
   movies: Movie[];
+  movie: Movie | null;
   quickViewMovieId: string | null;
   editMovie: Movie | null;
   deleteMovie: Movie | null;

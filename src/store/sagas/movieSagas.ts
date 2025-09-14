@@ -10,8 +10,10 @@ import {
   deleteMovieSuccess,
   editMovieRequest,
   editMovieSuccess,
+  fetchMovieRequest,
   fetchMoviesRequest,
   fetchMoviesSuccess,
+  fetchMovieSuccess,
 } from '@/store/slices/movieSlice.ts';
 
 import { API } from '@/api';
@@ -20,6 +22,15 @@ export function* fetchMoviesWorker(): any {
   try {
     const response = yield call(API.get, '/movies');
     yield put(fetchMoviesSuccess(response.data));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function* fetchMovieWorker(action: PayloadAction<string>): any {
+  try {
+    const response = yield call(API.get, `/movies/${action.payload}`);
+    yield put(fetchMovieSuccess(response.data));
   } catch (error) {
     console.error(error);
   }
@@ -54,6 +65,7 @@ export function* editMoviesWorker(action: PayloadAction<Movie>): any {
 
 export function* movieSaga() {
   yield takeEvery(fetchMoviesRequest.type, fetchMoviesWorker);
+  yield takeEvery(fetchMovieRequest.type, fetchMovieWorker);
   yield takeEvery(createMovieRequest.type, createMoviesWorker);
   yield takeEvery(deleteMovieRequest.type, deleteMoviesWorker);
   yield takeEvery(editMovieRequest.type, editMoviesWorker);

@@ -95,3 +95,10 @@
     grid-column: 1;
   }
 }
+
+.loader {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -4,15 +4,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Inbox, SearchX } from 'lucide-react';
 import { useSelector } from 'react-redux';
 
+import Loader from '@/components/commons/Loader';
 import MovieCard from '@/components/pages/HomePage/MovieCard';
 
-import { selectSearch, selectSearchedMovies } from '@/store/selectors/movieSelectors.ts';
+import { selectIsLoading, selectSearch, selectSearchedMovies } from '@/store/selectors/movieSelectors.ts';
 
 import s from './MovieList.module.scss';
 
 const MovieList = () => {
   const movies = useSelector(selectSearchedMovies);
   const search = useSelector(selectSearch);
+  const isLoading = useSelector(selectIsLoading);
 
   const hintAnimation = {
     hidden: {
@@ -27,6 +29,14 @@ const MovieList = () => {
       },
     },
   };
+
+  if (isLoading) {
+    return (
+      <div className={s.loader}>
+        <Loader />
+      </div>
+    );
+  }
 
   if (!movies.length && search) {
     return (
