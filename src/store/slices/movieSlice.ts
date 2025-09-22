@@ -4,31 +4,18 @@ import type { Movie, MovieStore } from '@/types/Movie.ts';
 
 const initialState: MovieStore = {
   movies: [],
+  movie: null,
   quickViewMovieId: null,
   deleteMovie: null,
   editMovie: null,
   search: '',
+  isLoading: false,
 };
 
 const movieSlice = createSlice({
   name: 'movie',
   initialState,
   reducers: {
-    addMovie: (state, action: PayloadAction<Movie>) => {
-      if (state.movies.find((movie) => movie.name === action.payload.name)) {
-        return;
-      }
-
-      state.movies.push(action.payload);
-    },
-    editMovie: (state, action: PayloadAction<Movie>) => {
-      const movieIndex = state.movies.findIndex((movie) => movie.id === action.payload.id);
-
-      state.movies[movieIndex] = action.payload;
-    },
-    deleteMovie: (state, action: PayloadAction<string>) => {
-      state.movies = state.movies.filter((movie) => movie.id !== action.payload);
-    },
     setQuickViewMovieId: (state, action: PayloadAction<string | null>) => {
       state.quickViewMovieId = action.payload;
     },
@@ -41,9 +28,51 @@ const movieSlice = createSlice({
     setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload;
     },
+    fetchMoviesRequest: (state) => {
+      state.isLoading = true;
+    },
+    fetchMoviesSuccess: (state, action: PayloadAction<Movie[]>) => {
+      state.movies = action.payload;
+      state.isLoading = false;
+    },
+    fetchMovieRequest: (state, action: PayloadAction<string>) => {
+      state.isLoading = true;
+    },
+    fetchMovieSuccess: (state, action: PayloadAction<Movie | null>) => {
+      state.movie = action.payload;
+      state.isLoading = false;
+    },
+    createMovieRequest: (state, action: PayloadAction<Movie>) => {},
+    createMovieSuccess: (state, action: PayloadAction<Movie>) => {
+      state.movies.push(action.payload);
+    },
+    deleteMovieRequest: (state, action: PayloadAction<string>) => {},
+    deleteMovieSuccess: (state, action: PayloadAction<Movie>) => {
+      state.movies = state.movies.filter((movie) => movie.id !== action.payload.id);
+    },
+    editMovieRequest: (state, action: PayloadAction<Movie>) => {},
+    editMovieSuccess: (state, action: PayloadAction<Movie>) => {
+      const movieIndex = state.movies.findIndex((movie) => movie.id === action.payload.id);
+
+      state.movies[movieIndex] = action.payload;
+    },
   },
 });
 
-export const { addMovie, setQuickViewMovieId, setEditMovie, setDeleteMovie, editMovie, deleteMovie, setSearch } =
-  movieSlice.actions;
+export const {
+  setQuickViewMovieId,
+  setEditMovie,
+  setDeleteMovie,
+  setSearch,
+  fetchMoviesRequest,
+  fetchMoviesSuccess,
+  fetchMovieRequest,
+  fetchMovieSuccess,
+  createMovieRequest,
+  createMovieSuccess,
+  deleteMovieRequest,
+  deleteMovieSuccess,
+  editMovieRequest,
+  editMovieSuccess,
+} = movieSlice.actions;
 export default movieSlice.reducer;
