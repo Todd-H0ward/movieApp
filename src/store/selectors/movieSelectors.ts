@@ -19,6 +19,8 @@ export const selectQuickViewMovie = createSelector(
 );
 
 export const selectSearchedMovies = createSelector([selectMovies, selectSearch], (movies, search) => {
+  if (!search) return movies;
+
   return movies.filter(
     (movie) =>
       movie.name.toLowerCase().includes(search.toLowerCase()) ||
